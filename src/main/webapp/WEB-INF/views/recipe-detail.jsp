@@ -4,7 +4,7 @@
 <%@ include file="/WEB-INF/views/common/header.jspf" %>
 
 <main class="container my-5">
-  <a href="${ctx}/recipes" class="text-decoration-none">&larr; Back to recipes</a>
+  <a href="${ctx}/recipes" class="text-decoration-none"><i class="bi bi-arrow-left me-1"></i>Back to recipes</a>
 
   <div class="row g-4 mt-1">
     <div class="col-12 col-lg-5">
@@ -14,7 +14,7 @@
                alt="<c:out value='${recipe.title}' />">
         </c:when>
         <c:otherwise>
-          <div class="recipe-placeholder rounded-4" style="height:320px;font-size:6rem">&#127858;</div>
+          <div class="recipe-placeholder rounded-4" style="height:320px;font-size:6rem"><i class="bi bi-egg-fried"></i></div>
         </c:otherwise>
       </c:choose>
     </div>
@@ -33,13 +33,13 @@
   <div class="row g-4 mt-2">
     <div class="col-12 col-md-5">
       <div class="card stat-card stat-green h-100"><div class="card-body">
-        <h4 class="mb-3">&#129364; Ingredients</h4>
+        <h4 class="mb-3"><i class="bi bi-basket2-fill text-success me-2"></i>Ingredients</h4>
         <div class="pre-line"><c:out value="${recipe.ingredients}" /></div>
       </div></div>
     </div>
     <div class="col-12 col-md-7">
       <div class="card stat-card stat-orange h-100"><div class="card-body">
-        <h4 class="mb-3">&#128221; Instructions</h4>
+        <h4 class="mb-3"><i class="bi bi-journal-text me-2" style="color:var(--brand)"></i>Instructions</h4>
         <div class="pre-line"><c:out value="${recipe.instructions}" /></div>
       </div></div>
     </div>

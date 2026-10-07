@@ -4,10 +4,10 @@
 <%@ include file="/WEB-INF/views/common/header.jspf" %>
 
 <main class="container text-center my-5 py-5">
-  <div style="font-size:4rem">&#127859;</div>
+  <div style="font-size:4.5rem;color:var(--brand)"><i class="bi bi-emoji-dizzy"></i></div>
   <h1 class="fw-bold">Something went wrong</h1>
   <p class="text-muted">The page you wanted is missing, restricted, or hit a problem.</p>
-  <a class="btn btn-brand" href="${ctx}/home">Back to home</a>
+  <a class="btn btn-brand btn-lg" href="${ctx}/home"><i class="bi bi-house-fill me-1"></i>Back to home</a>
 </main>
 
 <%@ include file="/WEB-INF/views/common/footer.jspf" %>

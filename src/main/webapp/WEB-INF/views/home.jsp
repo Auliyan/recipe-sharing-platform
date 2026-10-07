@@ -5,7 +5,8 @@
 
 <section class="hero">
   <div class="container text-center">
-    <h1 class="display-5 mb-3">Discover &amp; share recipes you'll love</h1>
+    <span class="eyebrow"><i class="bi bi-stars me-1"></i>Cook &middot; Share &middot; Enjoy</span>
+    <h1 class="mb-3">Discover &amp; share recipes you'll love</h1>
     <p class="lead mb-4">Thousands of home-cooked ideas, shared by people who love food.</p>
     <form class="row g-2 justify-content-center" action="${ctx}/recipes" method="get">
       <div class="col-12 col-md-6">
@@ -13,7 +14,7 @@
                placeholder="Search by dish or ingredient...">
       </div>
       <div class="col-12 col-md-auto">
-        <button class="btn btn-dark btn-lg w-100" type="submit">Search</button>
+        <button class="btn btn-dark btn-lg w-100" type="submit"><i class="bi bi-search me-1"></i>Search</button>
       </div>
     </form>
   </div>
@@ -34,7 +35,7 @@
     </c:otherwise>
   </c:choose>
   <div class="text-center mt-4">
-    <a class="btn btn-brand" href="${ctx}/recipes">Browse all recipes</a>
+    <a class="btn btn-brand btn-lg" href="${ctx}/recipes">Browse all recipes <i class="bi bi-arrow-right ms-1"></i></a>
   </div>
 </main>
 

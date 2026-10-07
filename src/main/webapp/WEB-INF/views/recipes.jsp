@@ -20,7 +20,7 @@
       </select>
     </div>
     <div class="col-4 col-md-3">
-      <button class="btn btn-brand w-100" type="submit">Search</button>
+      <button class="btn btn-brand w-100" type="submit"><i class="bi bi-search me-1"></i>Search</button>
     </div>
   </form>
 

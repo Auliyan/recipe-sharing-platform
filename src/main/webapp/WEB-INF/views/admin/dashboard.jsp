@@ -7,14 +7,22 @@
   <h2 class="fw-bold mb-4">Admin Dashboard</h2>
 
   <div class="row g-3 mb-5">
-    <div class="col-6 col-lg-3"><div class="card stat-card stat-orange"><div class="card-body">
-      <div class="text-muted">Users</div><div class="stat-number">${totalUsers}</div></div></div></div>
-    <div class="col-6 col-lg-3"><div class="card stat-card stat-green"><div class="card-body">
-      <div class="text-muted">Total recipes</div><div class="stat-number">${totalRecipes}</div></div></div></div>
-    <div class="col-6 col-lg-3"><div class="card stat-card stat-green"><div class="card-body">
-      <div class="text-muted">Approved</div><div class="stat-number">${approvedCount}</div></div></div></div>
-    <div class="col-6 col-lg-3"><div class="card stat-card stat-yellow"><div class="card-body">
-      <div class="text-muted">Awaiting approval</div><div class="stat-number">${pendingCount}</div></div></div></div>
+    <div class="col-12 col-sm-6 col-lg-3"><div class="card stat-card stat-orange"><div class="card-body d-flex align-items-center gap-3">
+      <div class="stat-icon icon-orange"><i class="bi bi-people-fill"></i></div>
+      <div><div class="text-muted small">Users</div><div class="stat-number">${totalUsers}</div></div>
+    </div></div></div>
+    <div class="col-12 col-sm-6 col-lg-3"><div class="card stat-card stat-green"><div class="card-body d-flex align-items-center gap-3">
+      <div class="stat-icon icon-green"><i class="bi bi-journal-richtext"></i></div>
+      <div><div class="text-muted small">Total recipes</div><div class="stat-number">${totalRecipes}</div></div>
+    </div></div></div>
+    <div class="col-12 col-sm-6 col-lg-3"><div class="card stat-card stat-green"><div class="card-body d-flex align-items-center gap-3">
+      <div class="stat-icon icon-green"><i class="bi bi-check-circle-fill"></i></div>
+      <div><div class="text-muted small">Approved</div><div class="stat-number">${approvedCount}</div></div>
+    </div></div></div>
+    <div class="col-12 col-sm-6 col-lg-3"><div class="card stat-card stat-yellow"><div class="card-body d-flex align-items-center gap-3">
+      <div class="stat-icon icon-yellow"><i class="bi bi-hourglass-split"></i></div>
+      <div><div class="text-muted small">Awaiting approval</div><div class="stat-number">${pendingCount}</div></div>
+    </div></div></div>
   </div>
 
   <h4 class="section-title">Recipes awaiting approval</h4>

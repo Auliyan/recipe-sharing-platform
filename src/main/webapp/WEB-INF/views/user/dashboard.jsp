@@ -6,7 +6,7 @@
 <main class="container my-5">
   <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-2 mb-4">
     <h2 class="fw-bold mb-0">My Dashboard</h2>
-    <a class="btn btn-brand" href="${ctx}/user/add-recipe">+ Share a new recipe</a>
+    <a class="btn btn-brand" href="${ctx}/user/add-recipe"><i class="bi bi-plus-lg me-1"></i>Share a new recipe</a>
   </div>
 
   <c:if test="${param.added == '1'}">
@@ -14,12 +14,18 @@
   </c:if>
 
   <div class="row g-3 mb-4">
-    <div class="col-12 col-md-4"><div class="card stat-card stat-yellow"><div class="card-body">
-      <div class="text-muted">Pending</div><div class="stat-number">${stats['PENDING']}</div></div></div></div>
-    <div class="col-12 col-md-4"><div class="card stat-card stat-green"><div class="card-body">
-      <div class="text-muted">Approved</div><div class="stat-number">${stats['APPROVED']}</div></div></div></div>
-    <div class="col-12 col-md-4"><div class="card stat-card stat-red"><div class="card-body">
-      <div class="text-muted">Rejected</div><div class="stat-number">${stats['REJECTED']}</div></div></div></div>
+    <div class="col-12 col-md-4"><div class="card stat-card stat-yellow"><div class="card-body d-flex align-items-center gap-3">
+      <div class="stat-icon icon-yellow"><i class="bi bi-hourglass-split"></i></div>
+      <div><div class="text-muted small">Pending</div><div class="stat-number">${stats['PENDING']}</div></div>
+    </div></div></div>
+    <div class="col-12 col-md-4"><div class="card stat-card stat-green"><div class="card-body d-flex align-items-center gap-3">
+      <div class="stat-icon icon-green"><i class="bi bi-check-circle-fill"></i></div>
+      <div><div class="text-muted small">Approved</div><div class="stat-number">${stats['APPROVED']}</div></div>
+    </div></div></div>
+    <div class="col-12 col-md-4"><div class="card stat-card stat-red"><div class="card-body d-flex align-items-center gap-3">
+      <div class="stat-icon icon-red"><i class="bi bi-x-circle-fill"></i></div>
+      <div><div class="text-muted small">Rejected</div><div class="stat-number">${stats['REJECTED']}</div></div>
+    </div></div></div>
   </div>
 
   <h4 class="section-title">My Recipes</h4>
