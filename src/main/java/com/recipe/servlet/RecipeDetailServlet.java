@@ -15,6 +15,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /** Shows one recipe (/recipe?id=3). Unapproved recipes are visible only to the owner and admins. */
 @WebServlet("/recipe")
@@ -40,10 +42,34 @@ public class RecipeDetailServlet extends HttpServlet {
                 return;
             }
             req.setAttribute("recipe", recipe);
+            // Ingredients become a checklist, instructions become numbered steps
+            req.setAttribute("ingredientList", toLines(recipe.getIngredients(), false));
+            req.setAttribute("stepList", toLines(recipe.getInstructions(), true));
         } catch (DatabaseException e) {
             throw new ServletException(e);
         }
         req.getRequestDispatcher("/WEB-INF/views/recipe-detail.jsp").forward(req, resp);
+    }
+
+    /**
+     * Splits multi-line text into a list of non-empty lines.
+     * If stripNumbers is true, a leading "1." or "2)" is removed (the page numbers steps itself).
+     */
+    private List<String> toLines(String text, boolean stripNumbers) {
+        List<String> lines = new ArrayList<>();
+        if (text == null) {
+            return lines;
+        }
+        for (String line : text.split("\\R")) {
+            String trimmed = line.trim();
+            if (stripNumbers) {
+                trimmed = trimmed.replaceFirst("^\\d+[.)]\\s*", "");
+            }
+            if (!trimmed.isEmpty()) {
+                lines.add(trimmed);
+            }
+        }
+        return lines;
     }
 
     private boolean canView(Recipe recipe, HttpServletRequest req) {
