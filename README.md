@@ -40,6 +40,7 @@ Default admin: `admin@recipe.com` / `admin123`
 - User: dashboard with recipe status counts, share a recipe (goes to admin approval)
 - Admin: dashboard with site statistics, approve/reject recipes, view all users
 - Responsive Bootstrap 5 UI with a custom orange/green theme
+- Modern UI: photo hero, category tiles, recipe detail with ingredient checklist, sidebar dashboards, admin charts (Chart.js), scroll animations and a dark mode toggle
 - `AuthFilter` protects `/user/*` and `/admin/*` pages by login and role
 
 ## Planned next

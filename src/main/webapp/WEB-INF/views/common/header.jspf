@@ -9,6 +9,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><c:out value="${pageTitle}" /> | RecipeShare</title>
 
+  <script>
+    // Apply the saved theme BEFORE the page paints (prevents a light flash in dark mode)
+    (function () {
+      try { document.documentElement.setAttribute('data-bs-theme', localStorage.getItem('theme') || 'light'); }
+      catch (e) { document.documentElement.setAttribute('data-bs-theme', 'light'); }
+    })();
+  </script>
+
   <!-- Fonts: Playfair Display (headings) + Poppins (body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -46,6 +54,7 @@
         <li class="nav-item"><a class="nav-link ${pageTitle == 'Browse Recipes' ? 'active' : ''}" href="${ctx}/recipes">Browse Recipes</a></li>
       </ul>
       <div class="d-flex flex-column flex-lg-row align-items-lg-center gap-2 mt-3 mt-lg-0">
+        <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"><i class="bi bi-moon-stars-fill"></i></button>
         <c:choose>
           <c:when test="${not empty sessionScope.user}">
             <span class="nav-avatar d-none d-lg-inline-flex" title="<c:out value='${sessionScope.user.name}' />">

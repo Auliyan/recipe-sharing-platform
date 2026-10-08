@@ -124,6 +124,18 @@
   if (window.Chart) {
     Chart.defaults.font.family = "'Poppins', sans-serif";
 
+    // Chart text/grid colours follow the light/dark theme
+    function applyChartTheme() {
+      var dark = document.documentElement.getAttribute('data-bs-theme') === 'dark';
+      Chart.defaults.color = dark ? '#ced4da' : '#495057';
+      Chart.defaults.borderColor = dark ? 'rgba(255,255,255,.1)' : 'rgba(0,0,0,.08)';
+    }
+    applyChartTheme();
+    document.addEventListener('themechange', function () {
+      applyChartTheme();
+      Object.values(Chart.instances).forEach(function (c) { c.update(); });
+    });
+
     new Chart(document.getElementById('statusChart'), {
       type: 'doughnut',
       data: {
