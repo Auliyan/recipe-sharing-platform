@@ -3,7 +3,11 @@
 <c:set var="pageTitle" value="Share a Recipe" />
 <%@ include file="/WEB-INF/views/common/header.jspf" %>
 
-<main class="container my-5" style="max-width: 760px">
+<c:set var="activeNav" value="add" />
+<main class="container-xl my-4 my-lg-5">
+  <div class="row g-4">
+    <div class="col-lg-3 col-xl-2"><%@ include file="/WEB-INF/views/common/dash-sidebar.jspf" %></div>
+    <div class="col-lg-9 col-xl-8">
   <h2 class="fw-bold mb-4">Share a new recipe</h2>
 
   <c:if test="${not empty errors}">
@@ -73,6 +77,8 @@
       <a class="btn btn-outline-secondary" href="${ctx}/user/dashboard">Cancel</a>
     </div>
   </div></form>
+    </div>
+  </div>
 </main>
 
 <%@ include file="/WEB-INF/views/common/footer.jspf" %>
