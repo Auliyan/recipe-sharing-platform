@@ -177,3 +177,88 @@ a:hover { color: var(--brand); }
   .recipe-img, .recipe-placeholder { height: 170px; }
   .section-title { font-size: 1.5rem; }
 }
+
+/* ---------- Recipe info chips (Phase B) ---------- */
+.chips { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: .85rem; align-content: flex-start; }
+.chip {
+  display: inline-flex; align-items: center; gap: .35rem; padding: .25rem .7rem; border-radius: 50rem;
+  font-size: .75rem; font-weight: 500; background: #f1f3f5; color: #495057;
+}
+.chip i { font-size: .85rem; }
+.chip-easy   { background: var(--leaf-soft); color: #237a35; }
+.chip-medium { background: var(--sun-soft);  color: #a86a00; }
+.chip-hard   { background: var(--berry-soft); color: #b02525; }
+.chips-lg .chip { font-size: .9rem; padding: .4rem .95rem; }
+
+/* ==================== Phase C: home page ==================== */
+
+/* Hero with photo background */
+.hero-photo {
+  background:
+    linear-gradient(135deg, rgba(43, 45, 66, .72), rgba(194, 65, 12, .62)),
+    var(--hero-img) center / cover no-repeat,
+    #c2410c;
+  padding: 6rem 0 7.5rem;
+}
+.hero-tags { font-size: .9rem; display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem; align-items: center; }
+.hero-tags span { opacity: .8; }
+.hero-tags a {
+  color: #fff; text-decoration: none; padding: .25rem .9rem; border-radius: 50rem;
+  background: rgba(255, 255, 255, .18); border: 1px solid rgba(255, 255, 255, .3); transition: background .2s;
+}
+.hero-tags a:hover { background: rgba(255, 255, 255, .35); color: #fff; }
+
+/* Stats band */
+.stats-band { margin-top: -3.5rem; position: relative; z-index: 2; }
+.stat-strip { border: 0; border-radius: var(--card-radius); box-shadow: var(--shadow-lg); padding: 1.5rem .5rem; }
+.stat-cell + .stat-cell { border-left: 1px solid #f1f3f5; }
+.stat-big { font-family: "Playfair Display", serif; font-size: clamp(1.75rem, 5vw, 2.75rem); font-weight: 800; color: var(--brand); line-height: 1.1; }
+.stat-label { color: var(--muted); font-size: .85rem; }
+
+/* Category tiles */
+.category-tile {
+  display: flex; flex-direction: column; align-items: center; text-align: center; gap: .15rem;
+  background: #fff; border-radius: var(--card-radius); padding: 1.4rem .75rem; text-decoration: none;
+  box-shadow: var(--shadow-sm); transition: transform .25s ease, box-shadow .25s ease; height: 100%;
+}
+.category-tile:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+.tile-icon {
+  width: 62px; height: 62px; border-radius: 20px; font-size: 1.75rem; margin-bottom: .6rem;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--brand-soft); color: var(--brand); transition: transform .25s ease;
+}
+.category-tile:hover .tile-icon { transform: scale(1.12) rotate(-6deg); }
+.col-lg:nth-child(2n) .tile-icon { background: var(--leaf-soft); color: var(--leaf); }
+.col-lg:nth-child(3n) .tile-icon { background: var(--sun-soft); color: var(--sun); }
+.col-lg:nth-child(5n) .tile-icon { background: var(--berry-soft); color: var(--berry); }
+.tile-name { font-family: "Playfair Display", serif; font-weight: 700; color: var(--ink); font-size: 1.05rem; }
+.tile-count { color: var(--muted); font-size: .75rem; }
+
+/* How it works */
+.how-section { background: linear-gradient(180deg, var(--brand-soft), #fff); }
+.section-title-center::after { left: 50%; transform: translateX(-50%); }
+.step-card {
+  position: relative; background: #fff; border-radius: var(--card-radius); padding: 2.25rem 1.5rem 1.75rem;
+  text-align: center; box-shadow: var(--shadow-sm); height: 100%;
+}
+.step-number {
+  position: absolute; top: -16px; left: 50%; transform: translateX(-50%);
+  width: 34px; height: 34px; border-radius: 50%; color: #fff; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, var(--brand-light), var(--brand-dark)); box-shadow: 0 4px 10px rgba(232, 89, 12, .4);
+}
+.step-icon { font-size: 2.4rem; color: var(--brand); margin-bottom: .5rem; }
+
+/* Call-to-action band */
+.cta-band {
+  color: #fff; border-radius: 2rem; padding: 3.5rem 1.5rem; position: relative; overflow: hidden;
+  background: radial-gradient(circle at 90% 10%, rgba(255, 255, 255, .22) 0, transparent 40%),
+              linear-gradient(135deg, #2f9e44, #1b7a30);
+}
+.cta-band h2 { font-weight: 800; }
+.cta-band .btn-light { color: #1b7a30; font-weight: 600; }
+
+@media (max-width: 576px) {
+  .hero-photo { padding: 4rem 0 6rem; }
+  .stats-band { margin-top: -3rem; }
+}

@@ -26,6 +26,8 @@ src/main/webapp/WEB-INF/views/     JSP pages (not directly reachable by URL)
 
 ## Setup
 1. Create the database: `mysql -u root -p < database/schema.sql`
+   (Optional) load demo recipes with photos: `mysql -u root -p recipe_db < database/seed.sql`
+   If you created the database before the "Phase B" update, first run `mysql -u root -p recipe_db < database/migration_phase_b.sql` once.
 2. Copy `src/main/resources/db.properties.example` to `db.properties` and put in your MySQL username/password.
 3. Run: `mvn jetty:run`
 4. Open http://localhost:8080/recipe/ (connection check: /recipe/test-db)

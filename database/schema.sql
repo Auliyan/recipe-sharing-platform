@@ -21,6 +21,9 @@ CREATE TABLE IF NOT EXISTS recipes (
     instructions TEXT NOT NULL,
     category     VARCHAR(50),
     image_path   VARCHAR(255),
+    prep_time    INT NOT NULL DEFAULT 30,
+    servings     INT NOT NULL DEFAULT 2,
+    difficulty   ENUM('EASY','MEDIUM','HARD') NOT NULL DEFAULT 'EASY',
     status       ENUM('PENDING','APPROVED','REJECTED') NOT NULL DEFAULT 'PENDING',
     created_at   TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE

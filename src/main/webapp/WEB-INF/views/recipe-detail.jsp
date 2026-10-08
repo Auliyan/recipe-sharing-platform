@@ -11,7 +11,7 @@
       <c:choose>
         <c:when test="${not empty recipe.imagePath}">
           <img class="img-fluid rounded-4 shadow-sm w-100" src="<c:out value='${recipe.imagePath}' />"
-               alt="<c:out value='${recipe.title}' />">
+               alt="<c:out value='${recipe.title}' />" onerror="imgFallback(this)">
         </c:when>
         <c:otherwise>
           <div class="recipe-placeholder rounded-4" style="height:320px;font-size:6rem"><i class="bi bi-egg-fried"></i></div>
@@ -27,6 +27,11 @@
       <h1 class="fw-bold"><c:out value="${recipe.title}" /></h1>
       <p class="text-muted">Shared by <strong><c:out value="${recipe.authorName}" /></strong></p>
       <p class="lead"><c:out value="${recipe.description}" /></p>
+      <div class="chips chips-lg">
+        <span class="chip"><i class="bi bi-clock"></i>${recipe.prepTime} min</span>
+        <span class="chip"><i class="bi bi-people"></i>${recipe.servings} servings</span>
+        <span class="chip chip-${fn:toLowerCase(recipe.difficulty)}"><i class="bi bi-speedometer2"></i>${fn:substring(recipe.difficulty, 0, 1)}${fn:toLowerCase(fn:substring(recipe.difficulty, 1, -1))}</span>
+      </div>
     </div>
   </div>
 

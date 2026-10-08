@@ -4,6 +4,7 @@ import com.recipe.model.Recipe;
 import com.recipe.util.DatabaseException;
 
 import java.util.List;
+import java.util.Map;
 
 /** Contract for all recipe-related database operations. */
 public interface RecipeDAO {
@@ -21,6 +22,9 @@ public interface RecipeDAO {
     List<Recipe> getByUser(int userId) throws DatabaseException;
 
     List<Recipe> getByStatus(String status) throws DatabaseException;
+
+    /** How many approved recipes exist in each category (category name -> count). */
+    Map<String, Integer> countApprovedByCategory() throws DatabaseException;
 
     boolean updateStatus(int recipeId, String status) throws DatabaseException;
 

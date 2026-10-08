@@ -35,6 +35,26 @@
                value="<c:out value='${recipe.imagePath}' />" placeholder="https://...">
       </div>
     </div>
+    <div class="row g-3 mb-3">
+      <div class="col-12 col-md-4">
+        <label class="form-label" for="prepTime">Prep time (minutes)</label>
+        <input class="form-control" type="number" id="prepTime" name="prepTime" min="1" max="1440"
+               value="${empty recipe ? 30 : recipe.prepTime}" required>
+      </div>
+      <div class="col-12 col-md-4">
+        <label class="form-label" for="servings">Servings</label>
+        <input class="form-control" type="number" id="servings" name="servings" min="1" max="50"
+               value="${empty recipe ? 2 : recipe.servings}" required>
+      </div>
+      <div class="col-12 col-md-4">
+        <label class="form-label" for="difficulty">Difficulty</label>
+        <select class="form-select" id="difficulty" name="difficulty" required>
+          <c:forEach var="d" items="${difficulties}">
+            <option value="${d}" ${d == recipe.difficulty ? 'selected' : ''}>${fn:substring(d, 0, 1)}${fn:toLowerCase(fn:substring(d, 1, -1))}</option>
+          </c:forEach>
+        </select>
+      </div>
+    </div>
     <div class="mb-3">
       <label class="form-label" for="description">Short description</label>
       <input class="form-control" id="description" name="description" maxlength="250"

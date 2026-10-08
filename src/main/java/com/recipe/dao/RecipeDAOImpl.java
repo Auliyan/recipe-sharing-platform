@@ -8,8 +8,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 /** JDBC implementation of RecipeDAO. */
 public class RecipeDAOImpl implements RecipeDAO {
@@ -21,7 +24,8 @@ public class RecipeDAOImpl implements RecipeDAO {
     @Override
     public boolean addRecipe(Recipe r) throws DatabaseException {
         String sql = "INSERT INTO recipes (user_id, title, description, ingredients, "
-                + "instructions, category, image_path, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+                + "instructions, category, image_path, prep_time, servings, difficulty, status) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (Connection con = DBConnection.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setInt(1, r.getUserId());
@@ -31,7 +35,10 @@ public class RecipeDAOImpl implements RecipeDAO {
             ps.setString(5, r.getInstructions());
             ps.setString(6, r.getCategory());
             ps.setString(7, r.getImagePath());
-            ps.setString(8, r.getStatus());
+            ps.setInt(8, r.getPrepTime());
+            ps.setInt(9, r.getServings());
+            ps.setString(10, r.getDifficulty());
+            ps.setString(11, r.getStatus());
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             throw new DatabaseException("Could not save recipe", e);
@@ -109,6 +116,23 @@ public class RecipeDAOImpl implements RecipeDAO {
         }
     }
 
+    @Override
+    public Map<String, Integer> countApprovedByCategory() throws DatabaseException {
+        Map<String, Integer> counts = new LinkedHashMap<>();
+        String sql = "SELECT category, COUNT(*) AS total FROM recipes "
+                + "WHERE status = 'APPROVED' GROUP BY category";
+        try (Connection con = DBConnection.getConnection();
+             Statement st = con.createStatement();
+             ResultSet rs = st.executeQuery(sql)) {
+            while (rs.next()) {
+                counts.put(rs.getString("category"), rs.getInt("total"));
+            }
+            return counts;
+        } catch (SQLException e) {
+            throw new DatabaseException("Could not count recipes per category", e);
+        }
+    }
+
     /** Runs any SELECT with the given parameters and converts rows to Recipe objects. */
     private List<Recipe> query(String sql, List<?> params) throws DatabaseException {
         List<Recipe> result = new ArrayList<>();
@@ -138,6 +162,9 @@ public class RecipeDAOImpl implements RecipeDAO {
         r.setInstructions(rs.getString("instructions"));
         r.setCategory(rs.getString("category"));
         r.setImagePath(rs.getString("image_path"));
+        r.setPrepTime(rs.getInt("prep_time"));
+        r.setServings(rs.getInt("servings"));
+        r.setDifficulty(rs.getString("difficulty"));
         r.setStatus(rs.getString("status"));
         r.setAuthorName(rs.getString("author"));
         return r;

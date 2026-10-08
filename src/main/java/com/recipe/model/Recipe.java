@@ -11,6 +11,9 @@ public class Recipe {
     private String category;
     private String imagePath;
     private String status; // PENDING, APPROVED or REJECTED
+    private int prepTime = 30;        // minutes
+    private int servings = 2;
+    private String difficulty = "EASY"; // EASY, MEDIUM or HARD
     private String authorName; // filled by a JOIN with users
 
     public Recipe() { }
@@ -31,6 +34,12 @@ public class Recipe {
     public void setCategory(String category) { this.category = category; }
     public String getImagePath() { return imagePath; }
     public void setImagePath(String imagePath) { this.imagePath = imagePath; }
+    public int getPrepTime() { return prepTime; }
+    public void setPrepTime(int prepTime) { this.prepTime = prepTime; }
+    public int getServings() { return servings; }
+    public void setServings(int servings) { this.servings = servings; }
+    public String getDifficulty() { return difficulty; }
+    public void setDifficulty(String difficulty) { this.difficulty = difficulty; }
     public String getAuthorName() { return authorName; }
     public void setAuthorName(String authorName) { this.authorName = authorName; }
     public String getStatus() { return status; }
